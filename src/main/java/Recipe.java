@@ -44,24 +44,6 @@ public class Recipe {
     return directionid;
   }
 
-  // public static List<Recipe> all() {
-  //   String sql = "SELECT * FROM recipes ORDER BY directions ASC";
-  //   try(Connection con = DB.sql2o.open()) {
-  //     return con.createQuery(sql).executeAndFetch(Recipe.class);
-  //   }
-  // }
-
-  // @Override
-  // public boolean equals(Object otherRecipe){
-  //   if (!(otherRecipe instanceof Recipe)) {
-  //     return false;
-  //   } else {
-  //     Recipe newRecipe = (Recipe) otherRecipe;
-  //     return this.getDescription().equals(newRecipe.getDescription()) &&
-  //     this.getId() == newRecipe.getId();
-  //   }
-  // }
-
   public void save() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO recipes(name) VALUES (:name)";
@@ -108,21 +90,6 @@ public class Recipe {
     }
   }
 
-
-
-  // public void delete() {
-  //   try(Connection con = DB.sql2o.open()) {
-  //     String deleteQuery = "DELETE FROM recipes WHERE id = :id;";
-  //       con.createQuery(deleteQuery)
-  //         .addParameter("id", this.getId())
-  //         .executeUpdate();
-  //
-  //     String joinDeleteQuery = "DELETE FROM categories_recipes WHERE recipe_id = :recipeId";
-  //       con.createQuery(joinDeleteQuery)
-  //         .addParameter("recipeId", this.getId())
-  //         .executeUpdate();
-  //   }
-  // }
 
   public static Recipe find(int id) {
     try(Connection con = DB.sql2o.open()) {
